@@ -31,6 +31,7 @@ services:
     - "10022:22"
     volumes:
     - /srv/docker/gitlab/gitlab:/home/git/data:Z
+    - /srv/docker/gitlab/shared:/home/git/shared:Z
     environment:
     - DEBUG=false
 
@@ -44,8 +45,8 @@ services:
     - REDIS_HOST=redis
     - REDIS_PORT=6379
 
-    - TZ=Asia/Kolkata
-    - GITLAB_TIMEZONE=Kolkata
+    - TZ=Asia/Shanghai
+    - GITLAB_TIMEZONE=Beijing
 
     - GITLAB_HTTPS=false
     - SSL_SELF_SIGNED=false
@@ -70,6 +71,8 @@ services:
 
     - GITLAB_BACKUP_SCHEDULE=daily
     - GITLAB_BACKUP_TIME=01:00
+
+    - GITLAB_SHARED_DIR=/home/git/shared
 
     - SMTP_ENABLED=false
     - SMTP_DOMAIN=www.example.com
